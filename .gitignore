@@ -73,3 +73,30 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# ---------------------------------------------------------------
+# Archivos LOCALES: no deben subirse al repositorio publico
+# ---------------------------------------------------------------
+# Notas/contexto del asistente de IA (solo para uso personal)
+CLAUDE.md
+.claude/
+.mcp.json
+Claude outputs/
+
+# Herramientas locales del editor (generadores y utilidades personales).
+# Para incluirlas en el repo, borra la linea siguiente.
+/[Aa]ssets/_LocalTools*
+
+# Editores / IDE
+.vscode/
+.idea/
+*.DotSettings.user
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Capturas de pantalla para la entrega (se adjuntan aparte, no van al repo)
+/Captures/
+/[Aa]ssets/Screenshots*
