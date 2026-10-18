@@ -1,11 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Cámara isométrica ortográfica que sigue al jugador con suavizado y permite hacer zoom con la rueda del ratón.
-/// La rotación de la cámara se fija en el Inspector (mira hacia -desplazamiento) y el script solo mueve su posición.
-/// Se actualiza en LateUpdate para moverse DESPUÉS de que el jugador se haya desplazado en Update.
-/// </summary>
 [RequireComponent(typeof(Camera))]
 public class CameraFollow : MonoBehaviour
 {
@@ -39,7 +34,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        // Colocamos la cámara de inicio sin transición para que no "vuele" hasta el jugador.
+       
         if (objetivo != null)
             transform.position = objetivo.position + desplazamiento;
     }
@@ -64,7 +59,7 @@ public class CameraFollow : MonoBehaviour
                 tamanoObjetivo = Mathf.Clamp(tamanoObjetivo - Mathf.Sign(rueda) * pasoZoom, zoomMinimo, zoomMaximo);
         }
 
-        // Interpolación independiente del framerate.
+        
         float t = 1f - Mathf.Exp(-suavizadoZoom * Time.deltaTime);
         camara.orthographicSize = Mathf.Lerp(camara.orthographicSize, tamanoObjetivo, t);
     }

@@ -1,14 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Movimiento del jugador con CharacterController.
-/// - Entrada: WASD / flechas / stick izquierdo (Input System, acción creada por código).
-/// - El "adelante" es el de la cámara (aplanado en el plano XZ), así W siempre sube por la pantalla.
-/// - El personaje gira suavemente hacia la dirección en la que se mueve.
-/// - Gravedad simple para que se mantenga pegado al suelo.
-/// Las colisiones con paredes y obstáculos las resuelve el CharacterController contra los colliders de los prefabs.
-/// </summary>
+
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
@@ -51,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
         GirarHacia(direccion);
 
-        // Gravedad: si estamos en el suelo mantenemos una pequeña fuerza hacia abajo para seguir "pegados".
+        
         if (controlador.isGrounded && velocidadVertical < 0f)
             velocidadVertical = -2f;
         velocidadVertical += gravedad * Time.deltaTime;
@@ -60,7 +53,7 @@ public class PlayerController : MonoBehaviour
         controlador.Move(movimiento * Time.deltaTime);
     }
 
-    // Convierte el input (x = lateral, y = adelante/atrás) en una dirección en el mundo según hacia dónde mira la cámara.
+    
     private Vector3 DireccionRelativaACamara(Vector2 entrada)
     {
         if (entrada.sqrMagnitude < 0.0001f)
@@ -85,7 +78,7 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, objetivo, velocidadGiro * Time.deltaTime);
     }
 
-    // Crea la acción "Mover" sin necesidad de un asset .inputactions: teclado (WASD y flechas) + mando.
+    
     private static InputAction CrearAccionMover()
     {
         var accion = new InputAction("Mover", InputActionType.Value);
